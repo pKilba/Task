@@ -3,7 +3,7 @@
 - **Владелец счета**: Может просматривать свой счет, пополнять его и снимать деньги.
 
 ## API Эндпоинты
-## URL Host   https://task-production-9106.up.railway.app 
+## URL для теста  https://task-production-9106.up.railway.app 
 ### Администратор (admin,admin)
 
 1. **Получить список всех счетов**
