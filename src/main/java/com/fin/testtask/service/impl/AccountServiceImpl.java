@@ -90,7 +90,7 @@ public class AccountServiceImpl implements AccountService {
             User user = userRepository.findById(account.getUserId()).orElseThrow();
             AccountUserDTO accountUserDTO = new AccountUserDTO();
             accountUserDTO.setAccountId(account.getId());
-        //    accountUserDTO.setBalance(account.getBalance());
+            accountUserDTO.setBalance(account.getBalance());
             accountUserDTO.setBlocked(account.getBlocked());
             accountUserDTO.setUserId(user.getId());
             accountUserDTO.setUsername(user.getUsername());
