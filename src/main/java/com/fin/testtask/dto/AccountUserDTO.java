@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class AccountUserDTO {
     private Long accountId;
-    private Double balance;
+    private BigDecimal balance;
     private Boolean blocked;
     private Long userId;
     private String username;
@@ -17,11 +17,11 @@ public class AccountUserDTO {
         this.accountId = accountId;
     }
 
-    public Double getBalance() {
+    public BigDecimal getBalance() {
         return balance;
     }
 
-    public void setBalance(Double balance) {
+    public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
 

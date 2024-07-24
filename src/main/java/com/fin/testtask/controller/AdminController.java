@@ -28,7 +28,7 @@ public class AdminController {
         return ResponseEntity.noContent().build();
     }
 
-    @RequestMapping( "/unblock/{accountId}")
+    @PostMapping("/unblock/{accountId}")
     public ResponseEntity<Void> unblockAccount(@PathVariable Long accountId) {
         accountService.unblockAccount(accountId);
         return ResponseEntity.noContent().build();
