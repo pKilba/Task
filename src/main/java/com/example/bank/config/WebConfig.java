@@ -8,7 +8,14 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebConfig implements WebMvcConfigurer {
 
     private static final String[] ALLOWED_METHODS = {"GET", "POST", "PUT", "DELETE", "OPTIONS"};
-    private static final String[] ALLOWED_ORIGINS = {"http://localhost:8080"};
+
+    // Укажите все разрешенные домены
+    private static final String[] ALLOWED_ORIGINS = {
+            ///           "http://localhost:8080",
+            "https://task-production-73fb.up.railway.app",
+            "https://example.com" // Добавьте другие домены, если необходимо
+    };
+
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
@@ -17,5 +24,4 @@ public class WebConfig implements WebMvcConfigurer {
                 .allowedHeaders("*")
                 .allowCredentials(true);
     }
-
 }
