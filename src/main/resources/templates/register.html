@@ -30,7 +30,7 @@
     }
 
     function registerUser() {
-        const login = document.getElementById("username").value;
+        const username = document.getElementById("username").value;
         const password = document.getElementById("password").value;
         const confirmPassword = document.getElementById("confirmPassword").value;
 
@@ -39,14 +39,14 @@
             return;
         }
 
-        log(`Registering user: ${login}`);
+        log(`Registering user: ${username}`);
 
         fetch('/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ login, password })
+            body: JSON.stringify({ username, password })
         })
             .then(response => {
                 if (response.ok) {
