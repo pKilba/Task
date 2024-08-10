@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Список банков</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse; /* Убираем дублирование границ */
+        }
+        th, td {
+            border: 1px solid #ddd; /* Добавляем границы для ячеек */
+            padding: 10px;
+            text-align: left; /* Горизонтальное выравнивание текста в ячейках */
+            vertical-align: middle; /* Вертикальное выравнивание текста в ячейках */
+        }
+        th {
+            background-color: #8C1F3E; /* Цвет заголовков */
+            color: white;
+            text-align: center; /* Горизонтальное выравнивание текста в заголовках */
+            vertical-align: middle; /* Вертикальное выравнивание текста в заголовках */
+            height: 60px; /* Высота ячеек заголовков */
+        }
+        tbody tr:hover {
+            background-color: #f1f1f1; /* Цвет при наведении на строку */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-4">Список банков</h1>
+    <p id="bank-count" th:text="'Количество банков: ' + ${banks.size()}"></p>
+    <table class="table table-bordered mt-4">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Банк/Филиал</th>
+            <th>БИК</th>
+            <th>БИК головного банка</th>
+            <th>Условный номер участника расчетов</th>
+            <th>Статус БИК</th>
+            <th>Наименование</th>
+            <th>Населенный пункт</th>
+            <th>Код контроля</th>
+            <th>Дата контроля</th>
+            <th>БИК приемника</th>
+        </tr>
+        </thead>
+        <tbody id="bank-table-body" th:each="bank, iter : ${banks}">
+        <tr>
+            <td th:text="${iter.index + 1}"></td> <!-- Номера строк -->
+            <td th:text="${bank.typ}"></td>
+            <td th:text="${bank.CDBank}"></td>
+            <td th:text="${bank.CDHeadBank}"></td>
+            <td th:text="${bank.NrBank}"></td>
+            <td th:text="${bank.BICStatus}"></td>
+            <td th:text="${bank.NmBankShort}"></td>
+            <td th:text="${bank.AdrBank}"></td>
+            <td th:text="${bank.CdControl != null ? bank.CdControl : 'действует'}"></td>
+            <td th:text="${bank.DtControl != null ? bank.DtControl : 'N/A'}"></td>
+            <td th:text="${bank.CdBankSuccessor != null ? bank.CdBankSuccessor : 'N/A'}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
