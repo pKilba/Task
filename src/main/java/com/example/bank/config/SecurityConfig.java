@@ -34,7 +34,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/authenticate", "/register", "/login").permitAll()
                         .requestMatchers("/banks").authenticated()
-                        .anyRequest().permitAll()  // Позволяем всем остальным запросам проходить
+                        .anyRequest().permitAll()
                 )
                 .exceptionHandling(exception -> exception
                         .accessDeniedHandler((request, response, accessDeniedException) -> {

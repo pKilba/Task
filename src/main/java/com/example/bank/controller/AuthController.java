@@ -15,7 +15,6 @@ import jakarta.servlet.http.HttpServletResponse;
 
 
 @RestController
-        //@RequestMapping("/auth")
 public class AuthController {
 
     private final UserRepository userRepository;
@@ -61,7 +60,7 @@ public class AuthController {
         jwtCookie.setHttpOnly(true);
         jwtCookie.setSecure(true);
         jwtCookie.setPath("/");
-        jwtCookie.setMaxAge(60 * 2); // 2 минуты
+        jwtCookie.setMaxAge(60 * 2);
         response.addCookie(jwtCookie);
     }
 }
