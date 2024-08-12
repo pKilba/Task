@@ -41,17 +41,22 @@ public class AuthController {
         addJwtCookieToResponse(response, jwt);
         return "Authentication successful";
     }
-
     @PostMapping("/register")
     public String registerUser(@RequestBody AuthenticationRequest authenticationRequest) {
+        if (authenticationRequest.getUsername().length() < 2 || authenticationRequest.getPassword().length() < 2) {
+            throw new IllegalArgumentException("Username and password must be at least 2 characters long");
+        }
+
         userRepository.findByLogin(authenticationRequest.getUsername())
                 .ifPresent(existingUser -> {
                     throw new UserAlreadyExistsException("User already exists with this login");
                 });
+
         User user = new User();
         user.setPassword(passwordEncoder.encode(authenticationRequest.getPassword()));
         user.setLogin(authenticationRequest.getUsername());
         userRepository.save(user);
+
         return "User registered successfully";
     }
 
